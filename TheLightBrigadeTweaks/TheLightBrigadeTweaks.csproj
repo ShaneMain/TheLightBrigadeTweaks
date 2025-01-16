@@ -60,9 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoEnemiesClearBlendPatch.cs" />
-    <Compile Include="ApplyHapticImpulsePatch.cs" />
-    <Compile Include="GrabHoverOffPatch.cs" />
-    <Compile Include="GrabHoverOnPatch.cs" />
     <Compile Include="FogPatch.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,22 +1,17 @@
 ﻿using MelonLoader;
-using Microsoft.SqlServer.Server;
-using System.Collections.Generic;
-using static LB.ControllerTutorial;
 
 namespace TheLightBrigadeTweaks
 {
     public class Main : MelonMod
     {
-        private static Main instance;
+        private static Main _instance;
 
-        public MelonPreferences_Category settings;
-        public MelonPreferences_Entry<int> reduceFogBy;
-        public MelonPreferences_Entry<bool> disableTrapsAfterClearingLevel;
-        public MelonPreferences_Entry<bool> disableAllVibrations;
-        public MelonPreferences_Entry<bool> disableInventoryVibrations;
-        public MelonPreferences_Entry<bool> disableAmmoPouchVibrations;
+        public MelonPreferences_Category Settings;
+        public MelonPreferences_Entry<int> ReduceFogBy;
+        public MelonPreferences_Entry<bool> DisableTrapsAfterClearingLevel;
+        public MelonPreferences_Entry<bool> DisableAllVibrations;
 
-        public static Main Instance { get => instance; set => instance = value; }
+        public static Main Instance { get => _instance; set => _instance = value; }
 
         public override void OnEarlyInitializeMelon()
         {
@@ -25,17 +20,14 @@ namespace TheLightBrigadeTweaks
 
         public override void OnInitializeMelon()
         {
-            settings = MelonPreferences.CreateCategory("Settings");
-            reduceFogBy = settings.CreateEntry("Reduce fog by percent", 20);
-            disableTrapsAfterClearingLevel = settings.CreateEntry("Disable traps after clearing level", false);
-            disableAllVibrations = settings.CreateEntry("Disable all vibrations", false);
-            disableInventoryVibrations = settings.CreateEntry("Disable inventory vibrations", false);
-            disableAmmoPouchVibrations = settings.CreateEntry("Disable ammo pouch vibrations", false);
+            Settings = MelonPreferences.CreateCategory("Settings");
+            ReduceFogBy = Settings.CreateEntry("Reduce fog by percent", 100);
+            DisableTrapsAfterClearingLevel = Settings.CreateEntry("Disable traps after clearing level", true);
         }
 
         public void SavePreferences()
         {
-            settings.SaveToFile();
+            Settings.SaveToFile();
         }
 
         public static void Log(string str)
